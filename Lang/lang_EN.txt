@@ -1,0 +1,29 @@
+	Magius:
+Hello there traveller!
+My name is Magius, the great mage!
+What... What? You just- you don't care?
+Well, nevermind that... This island is dangerous, you should take this.
+You'll be safer this way, surely you care about not dying.
+	Finished Dialogue:
+Go on, get going already!
+	Attacked Dialogue:
+Ow! What the hell? I regret giving that thing to you.
+	Magius' Brother:
+You talked to Magius over there huh? Yeah, he's a weirdo.
+I guess he gave you a sword or something? Weird for a mage to do.
+Anyway, if you're going in that there cave, be careful. 
+Aint nobody there to help you.
+	Finished Dialogue:
+Be safe out there.
+	Attacked Dialogue:
+Maybe Magius was right, just this once.
+	Boat:
+You came all the way here, after all that.
+No going back now.
+	Finished Dialogue:
+The boat reminds you of home.
+	Attacked Dialogue:
+You idiot.
+	Chest:
+	Finished Dialogue:
+All that remains is this chest. What's this?
