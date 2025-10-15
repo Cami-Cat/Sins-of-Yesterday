@@ -1,0 +1,134 @@
+[gd_scene load_steps=20 format=3 uid="uid://bf3p1c77ctcle"]
+
+[ext_resource type="Texture2D" uid="uid://bgualc1smbvln" path="res://Assets/Sprites/Character/Player/player_idle_001.png" id="1_cjmio"]
+[ext_resource type="Script" path="res://Scripts/Character/player.gd" id="1_dpilw"]
+[ext_resource type="Texture2D" uid="uid://cf1cjgkwfb7r7" path="res://Assets/Sprites/Character/Player/player_idle_002.png" id="2_las24"]
+[ext_resource type="PackedScene" uid="uid://bfpyl762s6j4e" path="res://Scenes/Utility/grid_movement.tscn" id="3_bduhl"]
+[ext_resource type="Texture2D" uid="uid://bwi5gpc4vm1sk" path="res://Assets/Sprites/Character/Player/Player_Facing_Up_001.png" id="5_6r6jl"]
+[ext_resource type="Script" path="res://Scripts/Character/attack_handler.gd" id="6_uiyt8"]
+[ext_resource type="Texture2D" uid="uid://cupxj3wj4m56i" path="res://Assets/Sprites/Character/Player/Player_Facing_Up_002.png" id="6_xetn3"]
+[ext_resource type="Texture2D" uid="uid://c5m2mw00k0ty4" path="res://Assets/Sprites/Character/Player/Player_Facing_Left_001.png" id="7_hrtok"]
+[ext_resource type="Texture2D" uid="uid://cfv1xpe6k5sfl" path="res://Assets/Sprites/Character/Player/Player_Facing_Left_002.png" id="8_neoed"]
+[ext_resource type="Texture2D" uid="uid://nos8xpt7fwyj" path="res://Assets/Sprites/Character/Player/Player_Facing_Right_001.png" id="9_mxqw0"]
+[ext_resource type="Texture2D" uid="uid://i8pppuedrc8s" path="res://Assets/Sprites/Character/Player/Player_Facing_Right_002.png" id="10_nkpws"]
+[ext_resource type="PackedScene" uid="uid://2mg3hwp3kijt" path="res://Scenes/Utility/interaction_handler.tscn" id="11_hm80i"]
+[ext_resource type="Texture2D" uid="uid://buuscnvt6s6kt" path="res://Assets/Sprites/Objects/sword_sprite.png" id="13_gfk6n"]
+[ext_resource type="Script" path="res://Scripts/Objects/sword.gd" id="14_pvmu3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eecub"]
+size = Vector2(16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0lxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cjmio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_las24")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jp5la"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6r6jl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xetn3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7iour"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hrtok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_neoed")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hbpd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_mxqw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nkpws")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("1_dpilw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_eecub")
+
+[node name="MovementLimiter" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.0
+drag_right_margin = 0.0
+editor_draw_drag_margin = true
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Down" type="AnimatedSprite2D" parent="Sprites"]
+sprite_frames = SubResource("SpriteFrames_n0lxc")
+animation = &"Idle"
+frame_progress = 0.593236
+
+[node name="Up" type="AnimatedSprite2D" parent="Sprites"]
+sprite_frames = SubResource("SpriteFrames_jp5la")
+animation = &"Idle"
+
+[node name="Left" type="AnimatedSprite2D" parent="Sprites"]
+sprite_frames = SubResource("SpriteFrames_7iour")
+animation = &"Idle"
+
+[node name="Right" type="AnimatedSprite2D" parent="Sprites"]
+sprite_frames = SubResource("SpriteFrames_5hbpd")
+animation = &"Idle"
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_bduhl")]
+self_node = NodePath("..")
+
+[node name="InteractionHandler" parent="GridMovement" instance=ExtResource("11_hm80i")]
+
+[node name="AttackHandler" type="Node2D" parent="GridMovement"]
+script = ExtResource("6_uiyt8")
+
+[node name="Sword" type="Sprite2D" parent="GridMovement/AttackHandler"]
+rotation = -0.785398
+texture = ExtResource("13_gfk6n")
+offset = Vector2(0, -16)
+script = ExtResource("14_pvmu3")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="GridMovement/AttackHandler/Sword"]
+volume_db = 10.0

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmhkxg78enpta"]
+
+[ext_resource type="Texture2D" uid="uid://bgualc1smbvln" path="res://Assets/Sprites/Character/Player/player_idle_001.png" id="1_bdjrv"]
+[ext_resource type="Script" path="res://Scripts/Character/enemy.gd" id="1_foarj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uyvv"]
+size = Vector2(16, 16)
+
+[node name="Enemy_01" type="Area2D" groups=["Enemies"]]
+script = ExtResource("1_foarj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bdjrv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3uyvv")

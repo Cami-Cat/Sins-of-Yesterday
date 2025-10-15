@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://yl8d131s4lgs"]
+
+[ext_resource type="Texture2D" uid="uid://c7407rkoc00w2" path="res://Assets/Sprites/Tile Sheets/pirate_tilemap_packed.png" id="1_hvqus"]
+[ext_resource type="Script" path="res://Scripts/Objects/interactable_object.gd" id="1_lin6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opgu5"]
+size = Vector2(16, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1jx0"]
+atlas = ExtResource("1_hvqus")
+region = Rect2(256, 112, 16, 16)
+
+[node name="Chest" type="Area2D"]
+script = ExtResource("1_lin6y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_opgu5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_t1jx0")

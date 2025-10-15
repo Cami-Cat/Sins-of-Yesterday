@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf3p1c77ctcle"]
+
+[ext_resource type="Texture2D" uid="uid://bgualc1smbvln" path="res://Assets/Sprites/player_idle_001.png" id="1_cjmio"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_dpilw"]
+[ext_resource type="Texture2D" uid="uid://cf1cjgkwfb7r7" path="res://Assets/Sprites/player_idle_002.png" id="2_las24"]
+[ext_resource type="PackedScene" uid="uid://bfpyl762s6j4e" path="res://Scenes/grid_movement.tscn" id="3_bduhl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0lxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cjmio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_las24")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eecub"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("1_dpilw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n0lxc")
+animation = &"Idle"
+frame = 1
+frame_progress = 0.593236
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_bduhl")]
+self_node = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_eecub")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

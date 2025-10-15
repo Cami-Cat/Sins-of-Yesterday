@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bggcnk5y28yi8"]
+
+[ext_resource type="Script" path="res://music_manager.gd" id="1_a2pmv"]
+[ext_resource type="AudioStream" uid="uid://dclse5vhmu8ln" path="res://Assets/Audio/angry scream.wav" id="2_hs1qa"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_a2pmv")
+currentMusic = ExtResource("2_hs1qa")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]

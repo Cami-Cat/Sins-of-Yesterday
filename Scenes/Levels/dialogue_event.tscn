@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccco7x6pntb82"]
+
+[ext_resource type="Script" path="res://Scripts/Events/dialogue_event.gd" id="1_jxxe3"]
+
+[node name="Dialogue Event" type="Node"]
+script = ExtResource("1_jxxe3")

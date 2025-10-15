@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://82xrhr8xfnjg"]
+
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue.gd" id="1_1jyk8"]
+
+[node name="Dialogue" type="Node"]
+script = ExtResource("1_1jyk8")
+dialogueStart = 1
+dialogueEnd = 5
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+pitch_scale = 0.5

@@ -1,0 +1,222 @@
+[gd_scene load_steps=10 format=3 uid="uid://xp762vqp6wuf"]
+
+[ext_resource type="Script" path="res://Scripts/Utility/ui.gd" id="1_kav3h"]
+[ext_resource type="FontFile" uid="uid://bpgf8c6ur1lkd" path="res://Assets/Fonts/LowGothic_8x10_Regular.ttf" id="1_ny1si"]
+[ext_resource type="Texture2D" uid="uid://bwcfapc5w4hbf" path="res://Assets/Sprites/Textbox/Scaled_Text_Box.png" id="2_pm3qx"]
+[ext_resource type="Texture2D" uid="uid://be5156m3nbuj7" path="res://Assets/Sprites/Utility/Cursor_frame_1.png" id="4_u30w2"]
+[ext_resource type="Texture2D" uid="uid://h31ff163nc5r" path="res://Assets/Sprites/Utility/Cursor_frame_2.png" id="5_ihrfu"]
+[ext_resource type="Texture2D" uid="uid://dxekvyx2kk4wj" path="res://Assets/Logo.png" id="6_y2f3g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6e266"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_u30w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ihrfu")
+}],
+"loop": true,
+"name": &"Bouncing",
+"speed": 2.0
+}]
+
+[sub_resource type="Curve" id="Curve_d02f7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_uk3di"]
+texture_mode = 1
+curve = SubResource("Curve_d02f7")
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Textbox" type="Sprite2D" parent="."]
+position = Vector2(222, 239)
+texture = ExtResource("2_pm3qx")
+
+[node name="Cursor" type="AnimatedSprite2D" parent="Textbox"]
+z_index = 50
+position = Vector2(210, 35)
+sprite_frames = SubResource("SpriteFrames_6e266")
+animation = &"Bouncing"
+frame_progress = 0.477519
+
+[node name="Text" type="Label" parent="Textbox" groups=["UI"]]
+z_index = 4096
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = -7.0
+offset_right = 215.0
+offset_bottom = -68.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ny1si")
+text = "Dialogue box"
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("1_kav3h")
+
+[node name="Name" type="Label" parent="Textbox" groups=["UI"]]
+z_index = 4096
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = -40.0
+offset_right = -2.0
+offset_bottom = -120.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ny1si")
+text = "NAME"
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("1_kav3h")
+
+[node name="Black Bar" type="Sprite2D" parent="."]
+visible = false
+z_index = 4096
+position = Vector2(221, 131.875)
+scale = Vector2(2.4375, 333.75)
+texture = SubResource("CurveTexture_uk3di")
+
+[node name="Credits" type="Node2D" parent="."]
+position = Vector2(0, 400)
+
+[node name="Logo" type="Sprite2D" parent="Credits"]
+z_index = 4096
+position = Vector2(222, 35)
+texture = ExtResource("6_y2f3g")
+
+[node name="Audio" type="Label" parent="Credits" groups=["UI"]]
+z_index = 4096
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 256.0
+offset_right = 442.0
+offset_bottom = 280.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ny1si")
+theme_override_font_sizes/font_size = 24
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("1_kav3h")
+
+[node name="People" type="Label" parent="Credits/Audio" groups=["UI"]]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 34.0
+offset_right = 430.0
+offset_bottom = 11.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ny1si")
+theme_override_font_sizes/font_size = 16
+text = "AZALI"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("1_kav3h")
+
+[node name="Development" type="Label" parent="Credits" groups=["UI"]]
+z_index = 4096
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 125.0
+offset_right = 442.0
+offset_bottom = 149.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ny1si")
+theme_override_font_sizes/font_size = 24
+text = "DEVELOPMENT
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("1_kav3h")
+
+[node name="People" type="Label" parent="Credits/Development" groups=["UI"]]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 34.0
+offset_right = 430.0
+offset_bottom = 11.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ny1si")
+theme_override_font_sizes/font_size = 16
+text = "Cami"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("1_kav3h")
+
+[node name="Art" type="Label" parent="Credits" groups=["UI"]]
+z_index = 4096
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 373.0
+offset_right = 442.0
+offset_bottom = 397.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ny1si")
+theme_override_font_sizes/font_size = 24
+text = "ART"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("1_kav3h")
+
+[node name="People" type="Label" parent="Credits/Art" groups=["UI"]]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 25.0
+offset_right = 430.0
+offset_bottom = 36.0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ny1si")
+theme_override_font_sizes/font_size = 16
+text = "Kenney.nl
+Cami"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("1_kav3h")

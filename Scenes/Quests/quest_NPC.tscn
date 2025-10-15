@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyp31pugo3c8n"]
+
+[ext_resource type="Script" path="res://Scripts/Character/quest_npc.gd" id="1_ep1ak"]
+[ext_resource type="Texture2D" uid="uid://duqcds5616dla" path="res://Assets/Sprites/Tile Sheets/tilemap_packed.png" id="2_frl5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8gj6"]
+atlas = ExtResource("2_frl5p")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptpi1"]
+size = Vector2(16, 16)
+
+[node name="NPC" type="Area2D"]
+script = ExtResource("1_ep1ak")
+
+[node name="Character_Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_a8gj6")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ptpi1")

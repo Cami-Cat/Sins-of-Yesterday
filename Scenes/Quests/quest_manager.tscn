@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://caqv5gvsgbry5"]
+
+[ext_resource type="Script" path="res://Scripts/Autoload/quest_manager.gd" id="1_f7o7m"]
+
+[node name="QuestManager" type="Node"]
+script = ExtResource("1_f7o7m")
+
+[node name="Available" type="Node" parent="."]
+
+[node name="Completed" type="Node" parent="."]
+
+[node name="Started" type="Node" parent="."]
+
+[node name="Attacked" type="Node" parent="."]

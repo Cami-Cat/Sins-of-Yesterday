@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcsng3dfvhc47"]
+
+[ext_resource type="Texture2D" uid="uid://buuscnvt6s6kt" path="res://Assets/Sprites/Objects/sword_sprite.png" id="1_b87g2"]
+
+[node name="Sword" type="Node2D" groups=["spawnedItem"]]
+z_index = 4096
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b87g2")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsxp7ra1w3cl"]
+
+[ext_resource type="Script" path="res://Scripts/Events/spawn_item_event.gd" id="1_thfkq"]
+
+[node name="Spawn_Item_Event" type="Node"]
+script = ExtResource("1_thfkq")

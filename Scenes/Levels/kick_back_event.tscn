@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4yuuyh0uwbpq"]
+
+[ext_resource type="Script" path="res://Scripts/Events/kick_back_event.gd" id="1_hkvba"]
+
+[node name="Kick Back Event" type="Node"]
+script = ExtResource("1_hkvba")

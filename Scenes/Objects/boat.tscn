@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0q5sjp3fxk1y"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/interactable_object.gd" id="1_nryrg"]
+[ext_resource type="Texture2D" uid="uid://cd0mja8scojuu" path="res://Assets/Sprites/Objects/regular Boat.png" id="2_hgkm6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vv5mq"]
+size = Vector2(31, 18)
+
+[node name="Boat" type="Area2D" groups=["interactive"]]
+script = ExtResource("1_nryrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_vv5mq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hgkm6")

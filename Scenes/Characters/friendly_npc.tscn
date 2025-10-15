@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmiuqm8n7u37n"]
+
+[ext_resource type="Script" path="res://Scripts/Character/npc.gd" id="1_f3ey4"]
+[ext_resource type="Texture2D" uid="uid://duqcds5616dla" path="res://Assets/Sprites/Tile Sheets/tilemap_packed.png" id="2_kvcl2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yw5r"]
+atlas = ExtResource("2_kvcl2")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3muvn"]
+size = Vector2(16, 16)
+
+[node name="Friendly NPC" type="Area2D"]
+collision_layer = 8
+collision_mask = 31
+script = ExtResource("1_f3ey4")
+npcName = " Magius"
+dialogue = ["Hello there, traveller", "I am Magius, the great mage!", "W-What, you don't care?", "F-Fine... But take this!", "This island is dangerous."]
+dialogueAction = Array[bool]([false, false, false, true, false])
+action = [Callable()]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_1yw5r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3muvn")
+
+[node name="DialogueTimer" type="Timer" parent="."]
+wait_time = 3.0

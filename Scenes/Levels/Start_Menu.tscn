@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://c78ytypqutpdr"]
+
+[ext_resource type="Texture2D" uid="uid://dxekvyx2kk4wj" path="res://Assets/Logo.png" id="1_0yaod"]
+[ext_resource type="Script" path="res://Scripts/Utility/start_menu.gd" id="1_fwokv"]
+[ext_resource type="FontFile" uid="uid://bpgf8c6ur1lkd" path="res://Assets/Fonts/LowGothic_8x10_Regular.ttf" id="2_my8dw"]
+[ext_resource type="Script" path="res://Scripts/Utility/logo.gd" id="3_omvka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ighyr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnq03"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fwokv")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(228, 108)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("1_0yaod")
+script = ExtResource("3_omvka")
+
+[node name="Start Button" type="Button" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 74.0
+offset_top = 175.0
+offset_right = 189.0
+offset_bottom = 216.0
+focus_neighbor_left = NodePath("../Quit Button")
+focus_neighbor_top = NodePath("../Quit Button")
+focus_neighbor_right = NodePath("../Quit Button")
+focus_neighbor_bottom = NodePath("../Quit Button")
+focus_next = NodePath("../Quit Button")
+focus_previous = NodePath("../Quit Button")
+theme_override_colors/font_hover_color = Color(0.72549, 0.341176, 0.32549, 1)
+theme_override_colors/font_pressed_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_colors/font_focus_color = Color(0.723596, 0.339224, 0.325473, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.72549, 0.341176, 0.32549, 1)
+theme_override_colors/icon_hover_color = Color(0.72549, 0.341176, 0.32549, 1)
+theme_override_fonts/font = ExtResource("2_my8dw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ighyr")
+action_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "START"
+flat = true
+alignment = 0
+
+[node name="Quit Button" type="Button" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 74.0
+offset_top = 209.0
+offset_right = 189.0
+offset_bottom = 250.0
+focus_neighbor_left = NodePath("../Start Button")
+focus_neighbor_top = NodePath("../Start Button")
+focus_neighbor_right = NodePath("../Start Button")
+focus_neighbor_bottom = NodePath("../Start Button")
+focus_next = NodePath("../Start Button")
+focus_previous = NodePath("../Start Button")
+theme_override_colors/font_hover_color = Color(0.72549, 0.341176, 0.32549, 1)
+theme_override_colors/font_pressed_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_colors/font_focus_color = Color(0.72549, 0.341176, 0.32549, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.72549, 0.341176, 0.32549, 1)
+theme_override_colors/icon_hover_color = Color(0.72549, 0.341176, 0.32549, 1)
+theme_override_fonts/font = ExtResource("2_my8dw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gnq03")
+action_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "QUIT"
+flat = true
+alignment = 0
+
+[node name="Song" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Button Sound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="focus_entered" from="Start Button" to="." method="_start_button_highlight"]
+[connection signal="focus_exited" from="Start Button" to="." method="_start_button_unhighlight"]
+[connection signal="mouse_entered" from="Start Button" to="." method="_start_button_highlight"]
+[connection signal="mouse_exited" from="Start Button" to="." method="_start_button_unhighlight"]
+[connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="focus_entered" from="Quit Button" to="." method="_quit_button_highlight"]
+[connection signal="focus_exited" from="Quit Button" to="." method="_quit_button_unhighlight"]
+[connection signal="mouse_entered" from="Quit Button" to="." method="_quit_button_highlight"]
+[connection signal="mouse_exited" from="Quit Button" to="." method="_quit_button_unhighlight"]
+[connection signal="pressed" from="Quit Button" to="." method="_on_quit_button_pressed"]
