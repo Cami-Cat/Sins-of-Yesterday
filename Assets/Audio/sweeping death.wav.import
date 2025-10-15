@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://pcknedb5kcb3"
+path="res://.godot/imported/sweeping death.wav-eb207fe72424feaee4c9c25e29f79f5e.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/sweeping death.wav"
+dest_files=["res://.godot/imported/sweeping death.wav-eb207fe72424feaee4c9c25e29f79f5e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
